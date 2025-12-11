@@ -5,13 +5,13 @@ Explore my Tableau Public dashboards:
 
 Explore my LinkedIn Profile: (https://www.linkedin.com/in/olivia-binns-22a8362b5/)
 
-Project 1 (Leaflet Introductory Code): 
+Project 1 (Leaflet Introductory Code):
 This R script uses the leaflet package to create interactive maps by first displaying a basic map of the United States, then plotting several major cities using their latitude and longitude coordinates. It adds standard markers for most cities but highlights Philadelphia with a custom red heart icon to distinguish it from the others. Overall, the code demonstrates how to build a map, add location-based data, incorporate clickable popups, and customize specific markers for clearer visual emphasis.
 
 Project 2 (Walkable areas in Pennsylvania):
 This R script loads and cleans Excel data, imports a Pennsylvania block-group shapefile, and joins the two datasets using a standardized GEOID field. After transforming the spatial data to a web-mapping coordinate system, it selects the top five records and calculates their geographic centroids. It then creates a clean, interactive leaflet map using a light basemap and places pink circle markers at each centroid, with popups displaying the corresponding GEOID values.
 
-Project 3 (Data Cleaning Practice):
+Project 3 (Data Cleaning Practice): https://github.com/obinns12/Portfolio/blob/5549bc68e7bf542c182b6730f58b78b48c5ecb3f/Data%20Cleaning%20Practice
 This script loads a raw subscription-customer dataset, cleans and standardizes it, and prepares a final deduplicated version for analysis. It begins by importing the data and cleaning column names, then explores key fields and identifies duplicate customer IDs. Next, it normalizes text fields such as plan type and region by fixing inconsistent capitalization, trimming whitespace, and correcting typos. The code then handles data quality issues by setting unrealistic ages and monthly spending values to missing, counting NA values, dropping rows with missing plan types, and imputing missing numeric fields with their median values. Finally, it removes duplicate customer records, resulting in a clean, consistent, and analysis-ready dataset.
 
 Project 4 (Logistic Regression on Grad School Data):
