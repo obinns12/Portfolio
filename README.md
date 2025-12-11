@@ -2,3 +2,6 @@ I build clear, data-driven stories using code, analytics, and compelling visuali
 
 Explore my Tableau Public dashboards:
 (https://public.tableau.com/app/profile/olivia.binns/vizzes)
+
+Explore my LinkedIn Profile:
+(linkedin.com/in/olivia-binns-22a8362b5)
