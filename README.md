@@ -1,4 +1,4 @@
-I build clear, data-driven stories using code, analytics, and compelling visualizations. My projects focus on transforming raw data into insights through R, SQL, and Tableau.
+This Portfolio is a compilation of all the Data Analysis projects I have done for academic, self-learning and other purposes. I build clear, data-driven stories using code, analytics, and compelling visualizations. My projects focus on transforming raw data into insights through R, SQL, and Tableau.
 
 Explore my Tableau Public dashboards:
 (https://public.tableau.com/app/profile/olivia.binns/vizzes)
