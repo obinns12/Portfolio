@@ -1,0 +1,126 @@
+setwd("C:/Users/Liv_b/OneDrive/Desktop/Fall 2025/DSS 445")
+subscription_raw <- read.csv("subscription_customers_raw.csv")
+View(subscription_raw)
+
+library(tidyverse)
+#install.packages("janitor")
+library(janitor)
+#install.packages("stringr")
+library(stringr)
+
+data_path <- "C:/Users/Liv_b/OneDrive/Desktop/Fall 2025/DSS 445/subscription_customers_raw.csv"  ### adjust if you're using a mac
+
+#Load the data 
+subscription_raw <- read_csv(data_path)
+
+#Quick look at the data
+
+head(subscription_raw)
+glimpse(subscription_raw)
+
+#Clean Data
+subscription <- subscription_raw %>%
+  clean_names()
+
+#check new column names
+names(subscription)
+
+
+#explore categories and duplicates
+subscription %>% tabyl (plan_type)
+subscription %>% tabyl (region)
+
+#duplicates
+subscription_dupes <- subscription %>% get_dupes (customer_id)
+subscription_dupes
+
+summary(subscription)
+
+
+#standardize case type and trim white space
+subscription_cleaned_step1 <- subscription %>%
+  mutate(
+    plan_type = str_trim(str_to_title(plan_type)),
+    region = str_trim(str_to_title(region))
+  )
+
+subscription_cleaned_step1 %>% tabyl(plan_type)
+subscription_cleaned_step1 %>% tabyl(region)
+
+
+#recode remaining typos to the correct labels
+subscription_cleaned_step1 <- subscription_cleaned_step1 %>%
+  mutate(
+    plan_type = recode(
+      plan_type,
+      "Std"       = "Standard",
+      "Prem"      = "Premium",
+      "Standard " = "Standard",
+      "Baisc"     = "Basic"
+      #Correct base labels ("Basic", "Standard", "Premium") stay as is
+    ),
+    region = recode(
+      region,
+      "Noth"  = "North",
+      "South " = "South",
+      "West"  = "West",
+      "West " = "West",
+      "East"  = "East"
+      #"North", "South", "East", "West" already correct
+    )
+  )
+
+subscription_cleaned_step1 %>% tabyl(plan_type)
+subscription_cleaned_step1 %>% tabyl(region)
+
+summary(subscription_cleaned_step1)
+
+
+
+subscription_cleaned_step2 <- subscription_cleaned_step1 %>%
+  mutate(
+    age = if_else(age < 18 | age > 100, NA_real_, age),
+    monthly_spend = if_else(monthly_spend < 0 | monthly_spend > 1000,
+                            NA_real_, monthly_spend)
+  )
+
+summary(subscription_cleaned_step2)
+
+
+#Count missing values by column
+subscription_cleaned_step2 %>%
+  summarise(across(everything(), ~ sum(is.na(.))))
+
+#   - drop rows with missing plan_type (for simplicity)
+#   - for age, monthly_spend, satisfaction_score: impute with median
+
+subscription_imputed <- subscription_cleaned_step2 %>%
+  filter(!is.na(plan_type)) %>%  # remove missing plan_type
+  mutate(
+    monthly_spend = if_else(
+      is.na(monthly_spend),
+      median(monthly_spend, na.rm = TRUE),
+      monthly_spend
+    ),
+    age = if_else(
+      is.na(age),
+      median(age, na.rm = TRUE),
+      age
+    ),
+    satisfaction_score = if_else(
+      is.na(satisfaction_score),
+      median(satisfaction_score, na.rm = TRUE),
+      satisfaction_score
+    )
+  )
+
+subscription_imputed %>%
+  summarise(across(everything(), ~ sum(is.na(.))))
+
+
+#remove duplicates rows
+subscription_final <- subscription_imputed %>%
+  distinct(customer_id, .keep_all = TRUE)
+
+nrow(subscription_imputed)
+nrow(subscription_final)
