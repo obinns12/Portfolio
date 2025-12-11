@@ -9,17 +9,25 @@ Project 1 (Leaflet Introductory Code): https://github.com/obinns12/Portfolio/blo
 
 This R script uses the leaflet package to create interactive maps by first displaying a basic map of the United States, then plotting several major cities using their latitude and longitude coordinates. It adds standard markers for most cities but highlights Philadelphia with a custom red heart icon to distinguish it from the others. Overall, the code demonstrates how to build a map, add location-based data, incorporate clickable popups, and customize specific markers for clearer visual emphasis.
 
+
+
 Project 2 (Walkable areas in Pennsylvania): https://github.com/obinns12/Portfolio/blob/e55dd19451db5ccc8fc0dba7c7e443eed6c506e6/Walkable%20areas%20in%20Pennsylvania
 
 This R script loads and cleans Excel data, imports a Pennsylvania block-group shapefile, and joins the two datasets using a standardized GEOID field. After transforming the spatial data to a web-mapping coordinate system, it selects the top five records and calculates their geographic centroids. It then creates a clean, interactive leaflet map using a light basemap and places pink circle markers at each centroid, with popups displaying the corresponding GEOID values.
+
+
 
 Project 3 (Data Cleaning Practice): https://github.com/obinns12/Portfolio/blob/5549bc68e7bf542c182b6730f58b78b48c5ecb3f/Data%20Cleaning%20Practice
 
 This script loads a raw subscription-customer dataset, cleans and standardizes it, and prepares a final deduplicated version for analysis. It begins by importing the data and cleaning column names, then explores key fields and identifies duplicate customer IDs. Next, it normalizes text fields such as plan type and region by fixing inconsistent capitalization, trimming whitespace, and correcting typos. The code then handles data quality issues by setting unrealistic ages and monthly spending values to missing, counting NA values, dropping rows with missing plan types, and imputing missing numeric fields with their median values. Finally, it removes duplicate customer records, resulting in a clean, consistent, and analysis-ready dataset.
 
+
+
 Project 4 (Logistic Regression on Grad School Data): https://github.com/obinns12/Portfolio/blob/e55dd19451db5ccc8fc0dba7c7e443eed6c506e6/Logistic%20Regression%20on%20Grad%20School%20Data
 
 This R script loads a dataset of graduate admissions (with variables like GRE, GPA, school rank, and admission outcome), does exploratory data analysis (summary statistics, standard deviations), and then builds a logistic regression model to predict admission (binary outcome) using GRE, GPA, and rank. It converts “rank” to a categorical factor, fits a logistic (binomial) model, and then calculates odds ratios by exponentiating the model coefficients. It assesses model fit using McFadden's R-squared and pseudo-R² via a package for model evaluation. Then it computes predicted admission probabilities for each applicant, inspects the percentage change in odds, and builds classification rules using different probability cutoffs (0.5, 0.4), producing confusion matrices. Lastly, the script evaluates model performance more thoroughly by constructing a ROC curve, computing sensitivity, specificity, and accuracy across thresholds, and uses pROC to identify an optimal cutoff for admissions.
+
+
 
 Project 5 (Marathon Analytics): https://github.com/obinns12/Portfolio/blob/e55dd19451db5ccc8fc0dba7c7e443eed6c506e6/Marathon%20Analytics.pdf
 
